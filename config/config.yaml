@@ -1,0 +1,39 @@
+server_url: https://scale.meiyou.io
+listen_addr: 0.0.0.0:8080
+
+noise:
+  private_key_path: /var/lib/headscale/noise_private.key
+
+tls_cert_path: ""
+tls_key_path: ""
+
+prefixes:
+  v4: 100.64.0.0/10
+  v6: fd7a:115c:a1e0::/48
+  allocation: sequential
+
+dns:
+  base_domain: tsdns.meiyou.io
+  nameservers:
+    global:
+      - 1.1.1.1
+      - 1.0.0.1
+
+# Add your traefik.network subnet so Headscale logs real client IPs
+trusted_proxies:
+  - 10.89.1.0/24
+
+database:
+  type: sqlite
+  sqlite:
+    path: /var/lib/headscale/db.sqlite
+    write_ahead_log: true
+
+derp:
+  server:
+    enabled: false
+  urls:
+    - https://controlplane.tailscale.com/derpmap/default
+  paths: []
+  auto_update_enabled: true
+  update_frequency: 24h

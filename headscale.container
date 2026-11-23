@@ -15,7 +15,7 @@ Volume=%h/mayo-server/subserv/headscale/runtime/headscale/data:/var/lib/headscal
 
 Label=traefik.enable=true
 Label=traefik.docker.network=traefik.network
-Label=traefik.http.routers.headscale.rule=Host(`scale.meiyou.io`) && !PathPrefix(`/admin`)
+Label=traefik.http.routers.headscale.rule=Host(`scale.meiyou.io`)
 Label=traefik.http.routers.headscale.entrypoints=websecure
 Label=traefik.http.routers.headscale.tls.certresolver=websecure
 Label=traefik.http.services.headscale.loadbalancer.server.port=8080
